@@ -22,15 +22,15 @@ class Fountain {
 
   addHandlers() {
     const isTouchInteraction = 'ontouchstart' in window || navigator.msMaxTouchPoints;
-
     const tap = isTouchInteraction ? 'touchstart' : 'mousedown';
     const tapEnd = isTouchInteraction ? 'touchend' : 'mouseup';
     const move = isTouchInteraction ? 'touchmove' : 'mousemove';
 
     document.addEventListener(move, (e) => {
+      e.preventDefault();
       this.mouseX = e.clientX || e.touches[0].clientX;
       this.mouseY = e.clientY || e.touches[0].clientY;
-    });
+    }, {passive: false});
 
     document.addEventListener(tap, (e) => {
       this.mouseX = e.clientX || e.touches[0].clientX;
