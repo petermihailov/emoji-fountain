@@ -45,10 +45,6 @@ class Fountain {
     document.addEventListener('mouseleave', () => {
       this.autoAddParticle = false;
     });
-
-    window.addEventListener('resize', () => {
-      this.height = window.innerHeight;
-    });
   }
 
   createParticle() {
